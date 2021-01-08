@@ -1,29 +1,27 @@
-Garden.destroy_all
+require 'json'
+require 'open-uri'
+require 'faker'
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
+#
+# Examples:
+#
+#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+#   Character.create(name: 'Luke', movie: movies.first)
+Cocktail.destroy_all
+Ingredient.destroy_all
 
-garden_names = [
-  "French garden",
-  "My Cute Balcony",
-  "English garden",
-  "Flowered patio",
-  "Garden in Japan",
-  "Walk among flowers"
-]
+puts "starts"
+url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list'
+ingredients_serialized = open(url).read
+ingredient = JSON.parse(ingredients_serialized)
 
-garden_names.each do |garden_name|
-  garden_request = RestClient.get("https://source.unsplash.com/1200x700/?garden")
-  garden = Garden.new(
-      name: garden_name,
-      banner_url: garden_request.request.url
-    )
-  garden.save!
-  3.times do
-    plant_request = RestClient.get("https://source.unsplash.com/400x300/?flower")
-    plant = Plant.new(
-      name: Faker::FunnyName.name,
-      image_url: plant_request.request.url
-    )
-    plant.garden = garden
-    plant.save!
-    sleep(2)
-  end
-end
+
+ingredient['drinks'].each do |row|
+   Ingredient.create!(name: row['strIngredient1'])
+ end
+
+# 10.times do
+#   Cocktail.create!(name: Faker::Food.fruits)
+# end
+# puts "finiii"

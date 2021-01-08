@@ -4,3 +4,31 @@
   right: 16px;
   z-index: 1000;
 }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Dancing Script', cursive;
+  font-weight: bold;
+}
+
+body {
+  font-family: 'ledger';
+}
+
+.container1 {
+  width: 1000px;
+  padding: 20px;
+  margin-left: 250px;
+  margin-right: 250px;
+  }
+
+.container1 > h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  margin-top: -15px;
+  font-size: 38px;
+}
+
+.bullet-none {
+  list-style-type: none;
+  font-size: 17px;
+}
