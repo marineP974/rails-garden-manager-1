@@ -1,0 +1,25 @@
+
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/dk85eoleo/image/upload/v1608411766/te%CC%81le%CC%81chargement_3_djvmjf.jpg);">
+  <div class="container">
+    <h1>Cocktail List</h1>
+    <p>Choose your cocktail.</p>
+  </div>
+</div>
+
+<div class= "container mt-4 mb-4 d-flex justify-content-center">
+
+    <%= link_to "Add a New One" , new_cocktail_path, class:"btn-add"  %>
+</div>
+
+<div class="container d-flex justify-content mt-3 mb-4">
+  <div class="cards">
+    <% @cocktails.each_with_index do |cocktail, index| %>
+      <% if cocktail.photo.attached? %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path cocktail.photo.key, height: 300, width: 400, crop: :fill %>')">
+          <%= index + 1  %>.
+          <%= link_to cocktail.name.capitalize , cocktail_path(cocktail), class:"recette"%>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

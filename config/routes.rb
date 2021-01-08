@@ -1,8 +1,16 @@
 Rails.application.routes.draw do
-  root to: 'gardens#index'
-
-  resources :gardens, only: [:index, :show, :new, :create] do
-    resources :plants, only: [:create]
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root to: 'cocktails#index'
+  resources :cocktails do
+    resources :doses, only: [:new, :create]
   end
-  resources :plants, only: [:destroy]
+
+  resources :doses, only: [:destroy]
 end
+
+
+# config/routes.rb
+# Rails.application.routes.draw do
+#   root to: 'pages#home' get 'about', to: 'pages#about'
+#   get 'contact', to: 'pages#contact'
+# end

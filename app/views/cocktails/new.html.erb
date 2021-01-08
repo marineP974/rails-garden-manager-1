@@ -1,0 +1,13 @@
+<div class= "container1 mt-3">
+  <h1>Add a new cocktail</h1>
+
+  <%= simple_form_for @cocktail do |f| %>
+  <%= f.input :name, placeholder: "Mojito ? Cosmopolitan ? TGV ?", label: "What is the name ?" %>
+  <%= f.input :photo, as: :file, input_html: { class: 'd-none hidden', id: 'photo-input'}, label_html: { class: 'upload-photo'}, label: '📷 Upload a photo'  %>
+      <%= image_tag "", width: 300, class: "hidden", id: "photo-preview" %>
+  <%= f.button :submit, "Create cocktail", class: "btn-new" %>
+  <% end %>
+</div>
+
+
+
