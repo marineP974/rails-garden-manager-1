@@ -19,15 +19,15 @@
         </div>
     </div>
   </div>
+</div>
 
-  <div class= "container1">
-    <%= link_to "add ingredients", new_cocktail_dose_path(@cocktail), class:"btn-add" %>
-    <%= link_to "Not a good one!", cocktail_path(@cocktail),
-        class:"btn-add",
-        method: :delete,
-        data: {:confirm => "are you sure ?? " }  %>
-    <%= link_to "Back", cocktails_path, class:"btn-add" %>
-  </div>
+<div class= "container1">
+  <%= link_to "add ingredients", new_cocktail_dose_path(@cocktail), class:"btn-add" %>
+  <%= link_to "Not a good one!", cocktail_path(@cocktail),
+      class:"btn-add",
+      method: :delete,
+      data: {:confirm => "are you sure ?? " }  %>
+  <%= link_to "Back", cocktails_path, class:"btn-add" %>
 </div>
 
 
